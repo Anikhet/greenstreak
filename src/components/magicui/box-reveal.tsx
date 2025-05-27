@@ -35,7 +35,7 @@ export const BoxReveal = ({
   return (
     <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
       <motion.div
-      className="text-6xl font-semibold"
+      className="text-8xl font-semibold"
         variants={{
           hidden: { opacity: 0, y: 75 },
           visible: { opacity: 1, y: 0 },

@@ -19,6 +19,8 @@ export function Timer({ user }: { user: User }) {
   const saveWork = async () => {
     const minutes = Math.floor(seconds / 60);
     const today = new Date().toISOString().split("T")[0];
+    setSeconds(0);
+    setRunning(false);
 
     await supabase
       .from("work_sessions")
@@ -38,6 +40,9 @@ export function Timer({ user }: { user: User }) {
       </Button>
         <Button className=" cursor-pointer text-white px-4 py-2" disabled={!running} onClick={() => setRunning(!running)}>
         Pause
+      </Button>
+        <Button className=" cursor-pointer text-white px-4 py-2"  disabled={seconds < 1} onClick={() => setSeconds(0)}>
+        Reset
       </Button>
       </section>
 

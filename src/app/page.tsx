@@ -7,6 +7,7 @@ import { supabase } from "@/lib/supabase";
 import { Heatmap } from "@/components/Heatmap";
 
 import { HeatmapEntry } from "@/lib/types";
+import { SignOutButton } from "@/components/SignOut";
 
 export default function Home() {
   const user = useUser();
@@ -27,7 +28,11 @@ export default function Home() {
   if (!user) return <Auth />;
 
   return (
-    <main className="flex flex-col bg-neutral- items-center justify-center min-h-screen p-10 ">
+    <main className="flex flex-col bg-neutral- items-center justify-center min-h-screen p-10 relative ">
+      <nav className="absolute top-0 right-0 p-4">
+        {user.id}
+        <SignOutButton/>
+      </nav>
       <div className="absolute top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
       <section className="w-full max-w-1/2 mb-10">
         <Timer user={user} />

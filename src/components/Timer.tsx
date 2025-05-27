@@ -33,16 +33,16 @@ export function Timer({ user }: { user: User }) {
     <div className="p-4 flex flex-col items-center gap-2">
       <h1 className="text-6xl font-semibold">{Math.floor(seconds / 60)}m {seconds % 60}s</h1>
       <section className="flex gap-5 mt-10">      
-        <Button className=" text-white px-4 py-2" onClick={() => setRunning(!running)}>
+        <Button className=" cursor-pointer text-white px-4 py-2" disabled={running} onClick={() => setRunning(!running)}>
         Start
       </Button>
-        <Button className=" text-white px-4 py-2" onClick={() => setRunning(!running)}>
+        <Button className=" cursor-pointer text-white px-4 py-2" disabled={!running} onClick={() => setRunning(!running)}>
         Pause
       </Button>
       </section>
 
       <Button
-      disabled={running?false: true} className=" mt-10 mb-10 px-4 py-2" onClick={saveWork}>
+      disabled={seconds < 1} className=" cursor-pointer mt-10 mb-10 px-4 py-2" onClick={saveWork}>
         Save
       </Button>
     </div>
